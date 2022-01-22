@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>home</title>
+        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    <body>
+    <div>
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <a href="#" class="navbar-brand" style="margin-left: 10px;"><h1>Student Dormitory Assistant</h1></a>
+            <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#toggleMobileMenu"
+            aria-bs-controls="toggleMobileMenu"
+            aria-expanded="false"
+            aria-lable="Toggel navigation"
+            style="margin-right: 12px;" >
+            <span class="navbar-toggler-icon"></span>
+                
+            Menu</button>
+            
+            <div class="collapse navbar-collapse " id="toggleMobileMenu">
+                <ul class="navbar-nav" style="margin-left: 10px;">
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/}">Home</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" th:href="@{/login}">Login</a>
+                    </li>
+                    <!-- <li>
+                        <a class="nav-link" th:href="@{/complains/current}">Complaints</a>
+                    </li> -->
+                </ul>
+            </div>
+        </nav>
+
+    <section>
+        <div class="row text-center">
+            <div class="col-md-6 p-3">
+                <img  class="img-fluid" th:src="@{/images/dorm.jpg}" >
+
+    
+            </div>
+            <div class="col-md-6 p-3">
+                <h2>Welcome to Our website...</h2></br>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, libero autem assumenda consequatur soluta culpa labore optio? Qui sequi eaque, dicta nesciunt, eligendi nostrum, voluptate explicabo provident cum eum totam.</p>
+                <a  class="btn btn-primary" th:href="@{/login}">Login to account</a>
+           </div>
+
+        </div>
+    </section>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    </body>
+    <footer class="bg-dark text-white ">
+        <div class=" bg-dark">
+            <div class="text-uppercase font-weight-bold text-warning bg ">Contact</div>
+            <a class="nav-link text-white" href="">0945464500</a>
+            <a class="nav-link text-white"href="">StudentServisaau@gmail.com</a>
+            <div class="text-center p-3">Copyright Student Dormitory Assistant @2022 </br> All rights reserved</div>
+            
+        </div>
+    </footer>
+    
+</html>
