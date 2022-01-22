@@ -5,7 +5,11 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
+<<<<<<< HEAD
 		<version>2.6.2</version>
+=======
+		<version>2.6.1</version>
+>>>>>>> 73f4ef6d6f3fe703c4a557902b6b2c991d8d0073
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.sda</groupId>
@@ -14,7 +18,11 @@
 	<name>student_dormitory_assistant</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
+<<<<<<< HEAD
 		<java.version>17</java.version>
+=======
+		<java.version>16</java.version>
+>>>>>>> 73f4ef6d6f3fe703c4a557902b6b2c991d8d0073
 	</properties>
 	<dependencies>
 		<dependency>
@@ -47,6 +55,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
+<<<<<<< HEAD
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -62,6 +71,8 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+=======
+>>>>>>> 73f4ef6d6f3fe703c4a557902b6b2c991d8d0073
 	</dependencies>
 
 	<build>
