@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Complaints</title>
+        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    </head>
+
+    <body>
+    <div>
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <a href="#" class="navbar-brand " style="margin-left: 10px;"><h1>Student Dormitory Assistant</h1></a>
+            <div class="text-right">
+              <button
+            class="navbar-toggler btn btn-secondary"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#toggleMobileMenu"
+            aria-bs-controls="toggleMobileMenu"
+            aria-expanded="false"
+            aria-lable="Toggel navigation"
+            style="margin-right: 12px;" >
+            <span class="navbar-toggler-icon"></span>
+             Menu</button>
+            </div>
+            
+            <div class="collapse navbar-collapse " id="toggleMobileMenu">
+                <ul class="navbar-nav" style="margin-left: 10px;">
+                    <li>
+                        <a class="nav-link text-black-50" th:href="@{/}">Profile</a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-black-50" th:href="@{/complains/current}">Complaints</a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-black-50" th:href="@{/}">Valid/Invalid-Complaints</a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-black-50" th:href="@{/#}">Addressed/Unaddressed-Complaints</a>
+                    </li>
+                </ul>
+                <a  class="btn btn-primary mt-2 mb-2 text-right" style="margin-right:10px;" th:herf="@{localhost:8080}">Logout</a>
+            </div>
+        </nav>
+    </div>
+    <section>
+        <div class="container">
+            <h2 class="text-center">Here you can write your complains and send to the proctor!!!</h2>
+            <form
+        class="w-50 mb-2 mt-2"
+        method="POST"
+        th:action="@{/complains}"
+        th:object="${complainReport}"
+        style="margin-left: 10px;"
+      >
+      <div>
+        <label class="form-label" for="studentName">Name: </label>
+        <input
+          th:class="|form-control ${#fields.hasErrors('studentName')? 'is-invalid': 'is-valid'}|"
+          type="text"
+          th:field="*{studentName}"
+        />
+        <div
+          class="invalid-feedback"
+          th:if="${#fields.hasErrors('studentName')}"
+          th:errors="*{studentName}"
+        ></div>
+      </div>
+      <div>
+          <label class="form-label" for="studentID">ID: </label>
+          <input
+            th:class="|form-control ${#fields.hasErrors('studentID')? 'is-invalid': 'is-valid'}|"
+            type="text"
+            th:field="*{studentID}"
+          />
+          <div
+            class="invalid-feedback"
+            th:if="${#fields.hasErrors('studentID')}"
+            th:errors="*{studentID}"
+          ></div>
+        </div>
+        <div>
+          <label class="form-label" for="studentBlockNO">BLOCK NO: </label>
+          <input
+            th:class="|form-control ${#fields.hasErrors('studentBlockNO')? 'is-invalid': 'is-valid'}|"
+            type="text"
+            th:field="*{studentBlockNO}"
+          />
+          <div
+            class="invalid-feedback"
+            th:if="${#fields.hasErrors('studentBlockNO')}"
+            th:errors="*{studentBlockNO}"
+          ></div>
+        </div>
+        <div>
+          <label class="form-label" for="studentDormNO">DORM NO: </label>
+          <input
+            th:class="|form-control ${#fields.hasErrors('studentDormNO')? 'is-invalid': 'is-valid'}|"
+            type="text"
+            th:field="*{studentDormNO}"
+          />
+          <div
+            class="invalid-feedback"
+            th:if="${#fields.hasErrors('studentDormNO')}"
+            th:errors="*{studentDormNO}"
+          ></div>
+        </div>
+        <div>
+          <label class="form-label" for="studentComplain">COMPLAINTS: </label>
+          <textarea
+            th:class="|form-control ${#fields.hasErrors('studentComplain')? 'is-invalid': 'is-valid'}|"
+            rows="3"
+            th:field="*{studentComplain}"
+          >write your complain here...</textarea>
+          <div
+            class="invalid-feedback"
+            th:if="${#fields.hasErrors('studentComplain')}"
+            th:errors="*{studentComplain}"
+          ></div>
+        </div>
+       <div class="text-center">
+          <input
+          class="btn btn-primary mt-2"
+          style="margin-top: 5px; margin-bottom: 10px;"
+          type="submit"
+          value="Submit Complaints"
+          />
+       </div>
+        </form>    
+      </div>                
+    </section>
+    <footer class="bg-dark text-white ">
+        <div class=" bg-dark">
+            <div class="text-uppercase font-weight-bold text-warning bg ">Contact</div>
+            <a class="nav-link text-white" href="">0945464500</a>
+            <a class="nav-link text-white"href="">StudentServisaau@gmail.com</a>
+            <div class="text-center p-3">Copyright Student Dormitory Assistant @2022 </br> All rights reserved</div>
+            
+        </div>
+    </footer>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    </body>
+</html>
