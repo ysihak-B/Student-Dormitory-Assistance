@@ -1,6 +1,5 @@
 package com.sda.student_dormitory_assistant;
 
-<<<<<<< HEAD
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,23 +30,6 @@ public class ComplainReport {
    @Digits(integer= 3 ,fraction = 0, message = "dorm number must be a number ")
    private String studentDormNO;
    @Size(min = 10, max = 100, message="write your complain properly")
-=======
-import javax.validation.constraints.NotBlank;
-
-import lombok.Data;
-
-@Data
-public class ComplainReport {
-   @NotBlank(message = "student name is required")
-   private String studentName;
-   @NotBlank(message = "studentID name is required")
-   private String studentID;
-   @NotBlank(message = "building block is required")
-   private String studentBlockNO;
-   @NotBlank(message = "Dormno is required")
-   private String studentDormNO;
-   @NotBlank(message = "write your complain")
->>>>>>> 73f4ef6d6f3fe703c4a557902b6b2c991d8d0073
    private String studentComplain;
    
    }
