@@ -1,44 +1,44 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <title>login</title>
-    <!-- Bootstrap core CSS -->
+<!DOCTYPE html> 
+<html xmlns:th="http://www.thymeleaf.org"> 
+  <head> 
+    <title>Login</title> 
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
-  </head>
-
-  <body>
-    <main class="form-signin mx-auto w-50">
-      <h1>Login</h1>
-      <!-- <img th:src="@{/images/dorm.jpg}" /> -->
-
-      <div th:if="${error}">
-        Unable to login. Check your username and password.
+    <link th:href="@{/css/forms.css}" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  </head> 
+ 
+  <body> 
+    <main class="form-signin mx-auto w-50"> 
+      <div th:if="${error}"> 
+        Unable to login. Check your username and password. 
       </div>
-      <form method="POST" th:action="@{/login}">
-        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+      <form class="form-container justify-content-center align-self-center" method="POST" th:action="@{/login}"> 
+        <h2>Login</h2>
+ 
+        <label class="form-label" for="username">Username</label> 
+        <input 
+          type="text" 
+          class="form-control" 
+          id="username" 
+          name="username" 
+          placeholder="Username" 
+        /> 
+        <label class="form-label" for="password">Password</label> 
+        <input 
+          type="password" 
+          class="form-control" 
+          id="password" 
+          name="password" 
+          placeholder="Password" 
+        /> 
+        <br/>
+        <p>New here? Click <a th:href="@{/register}">here</a> to register.</p>
 
-        <label class="form-label" for="username">Username</label>
-        <input
-          type="text"
-          class="form-control"
-          id="username"
-          name="username"
-          placeholder="Username"
-        />
-        <label class="form-label" for="password">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          id="password"
-          name="password"
-          placeholder="Password"
-        />
-        <button class="w-100 btn btn-lg btn-primary my-2" type="submit">
-          Sign in
-        </button>
-        <p>Are you new here? Click <a th:href="@{/register}">Sign Up</a> to register.</p>
-      </form>
-    </main>
-    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-  </body>
+        <div class="d-grid">
+          <a class="btn btn-primary" th:href="@{/complains/current}" role="button">Send</a>
+        </div>
+      </form> 
+    </main> 
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script> 
+  </body> 
 </html>
