@@ -5,6 +5,8 @@ import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,7 +18,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
+@Entity(name="user")
 @Data
 @NoArgsConstructor
 public class User implements UserDetails {
@@ -30,10 +32,23 @@ public class User implements UserDetails {
     private String password;
     private String fullName;
     private String phone;
+    @Column(nullable = true)
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
+    public static enum Role {
+        
+        Student,
+        ADMIN;
+
+        private Role() {
+
+        }
+    }
+ 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+        return Arrays.asList(new SimpleGrantedAuthority("ROLE_" + role.name()));
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.sda.student_dormitory_assistant.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -27,17 +28,19 @@ public class SecurityConfig {
             throw new UsernameNotFoundException("User '" + username + "' not found");
         };
     }
+    @Autowired
 
+    private AuthenticationuccessHandler successHandler;
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeRequests()
-                .antMatchers("/complains/current", "/complains/*").hasRole("USER")
-                .antMatchers("/", "/**").permitAll()
+                .antMatchers("/login","/Home","/register").permitAll()
+                .antMatchers("/complains/current","/new").access("hasRole('ROLE_Student')")
+                .antMatchers("/edit/{id}","/delete/{id}","/save").access("hasRole('ROLE_ADMIN')")
                 .and()
-                .formLogin()
+                .formLogin().successHandler(successHandler)
                 .loginPage("/login")
-                .defaultSuccessUrl("/complains/current")
                 .and()
                 .logout()
                   .logoutSuccessUrl("/")

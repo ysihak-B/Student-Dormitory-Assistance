@@ -14,8 +14,6 @@
       <div th:if="${error}">
         Unable to login. Check your username and password.
       </div>
-
-      <p>New here? Click <a th:href="@{/register}">here</a> to register.</p>
       <form method="POST" th:action="@{/login}">
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
@@ -38,6 +36,7 @@
         <button class="w-100 btn btn-lg btn-primary my-2" type="submit">
           Sign in
         </button>
+        <p>Are you new here? Click <a th:href="@{/register}">Sign Up</a> to register.</p>
       </form>
     </main>
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>

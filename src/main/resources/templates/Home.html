@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
- xmlns:th="http://www.thymeleaf.org">
+ xmlns:th="http://www.thymeleaf.org"
+ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     <head>
         <title>home</title>
         <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
@@ -32,9 +33,6 @@
                     <li>
                         <a class="nav-link" th:href="@{/login}">Login</a>
                     </li>
-                    <!-- <li>
-                        <a class="nav-link" th:href="@{/complains/current}">Complaints</a>
-                    </li> -->
                 </ul>
             </div>
         </nav>
@@ -43,15 +41,14 @@
         <div class="row text-center">
             <div class="col-md-6 p-3">
                 <img  class="img-fluid" th:src="@{/images/dorm.jpg}" >
-
-    
             </div>
             <div class="col-md-6 p-3">
-                <h2>Welcome to Our website...</h2></br>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, libero autem assumenda consequatur soluta culpa labore optio? Qui sequi eaque, dicta nesciunt, eligendi nostrum, voluptate explicabo provident cum eum totam.</p>
-                <a  class="btn btn-primary" th:href="@{/login}">Login to account</a>
+                <h2>Welcome to Student Dormitory Assistant</h2></br>
+                <p>Student Dormitory Assistant helps students submit their complaints and report misconduct 
+                    of dorm mates easily. In addition, this website helps Proctors know and address complaints 
+                    of students and reports of misconduct.</p>
+                <a  class="btn btn-primary" th:href="@{/login}">Login to Account</a>
            </div>
-
         </div>
     </section>
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Complaints</title>
+        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    </head>
+
+    <body>
+    <div class="row justify-content-center">
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <a href="#" class="navbar-brand " style="margin-left: 10px;"><h1>Student Dormitory Assistant</h1></a>
+            <div class="text-right">
+              <button
+            class="navbar-toggler btn btn-secondary"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#toggleMobileMenu"
+            aria-bs-controls="toggleMobileMenu"
+            aria-expanded="false"
+            aria-lable="Toggel navigation"
+            style="margin-right: 12px;" >
+            <span class="navbar-toggler-icon"></span>
+             Menu</button>
+            </div>
+            
+            <div class="collapse navbar-collapse " id="toggleMobileMenu">
+                <ul class="navbar-nav" style="margin-left: 10px;">
+                   
+                    <li class="nav-item active">
+                        <a class="nav-link text-black-50" th:href="@{/complains/current}">Report-Complaints</a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-black-50" th:href="@{/complaint}">complaints</a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-black-50" th:href="@{/validity}">Valid-Complaints</a>
+                    </li>
+                     <li>
+                        <a class="nav-link text-black-50" th:href="@{/isAddressed}">Addressed-Complaints</a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-black-50"
+                        th:href="@{/profile}" 
+                        sec:authentication="name"></a>
+                    </li>
+                </ul>
+                <form  class="d-flex" method="POST" th:action="@{/logout}">
+                  <input class="form-control me-2 btn btn-outline-success" type="submit" value="Logout"/>
+                </form>
+                </div>
+        </nav>
+    </div>
+
+
+<div>
+
+
+    <h1 class="card-header text-center font-weight-bold text-uppercase py-4">List of Complaints</h1>
+    <!-- <a href="/new">Create New Complaint</a> -->
+
+        <div class="table">
+            <table class=" table  table-responsive" th:each="Profile : ${listProfile}">
+                <tbody >
+                    <tr>
+                        <td>ID</td>
+                        <td th:text="${Profile.id}"></td>
+                    </tr>
+                    <tr>
+                        <td>Student Name</td>
+                        <td th:text="${Profile.studentName}"></td>
+                    </tr>
+                    <tr>
+                        <td>Student Id</td>
+                        <td th:text="${Profile.studentID}"></td>
+                    </tr>
+                    <tr>
+                        <td>Block Number</td>
+                        <td th:text="${Profile.studentBlockNO}"></td>
+                    </tr>
+                    <tr>
+                        <th>Dorm Number</th>
+                        <td th:text="${Profile.studentDormNO}"></td>
+                    </tr>
+                    <tr>
+                        <td>Complain</td>
+                        <td th:text="${Profile.studentComplain}"></td>
+                    </tr>
+                    <tr>
+                        <td>Validity</td>
+                        <td th:text="${Profile.valid}"></td>
+                    </tr>
+                    <tr>
+                        <td>Addressed or Unaddressed</td>
+                        <td th:text="${Profile.address}"></td>
+                    </tr>
+                    <tr>
+                        <td><a class="btn btn-primary btn-md "  aria-disabled="true" th:href="@{'/edit/' + ${Profile.id}}">Edit</a>
+                            &nbsp;&nbsp;&nbsp;
+                            <a  class="btn btn-primary btn-md "  th:href="@{'/delete/' + ${Profile.id}}">Delete</a></td>
+                            
+                    </tr>
+                </tbody>
+                <br>
+                <br>
+        </div>
+</div>  
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script> 
+</body>
+
+
+</html>
+
+

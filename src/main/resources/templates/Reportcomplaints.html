@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
- xmlns:th="http://www.thymeleaf.org">
+ xmlns:th="http://www.thymeleaf.org"
+ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     <head>
         <title>Complaints</title>
         <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
@@ -9,7 +10,7 @@
     </head>
 
     <body>
-    <div>
+    <div class="row justify-content-center">
         <nav class="navbar navbar-expand-md navbar-light bg-light">
             <a href="#" class="navbar-brand " style="margin-left: 10px;"><h1>Student Dormitory Assistant</h1></a>
             <div class="text-right">
@@ -28,20 +29,25 @@
             
             <div class="collapse navbar-collapse " id="toggleMobileMenu">
                 <ul class="navbar-nav" style="margin-left: 10px;">
-                    <li>
-                        <a class="nav-link text-black-50" th:href="@{/profile}">Profile</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link text-black-50" th:href="@{/complains/current}">Complaints</a>
-                    </li>
-                    <li>
-                        <a class="nav-link text-black-50" th:href="@{/}">Valid/Invalid-Complaints</a>
-                    </li>
-                    <li>
-                        <a class="nav-link text-black-50" th:href="@{/#}">Addressed/Unaddressed-Complaints</a>
-                    </li>
+                  <li class="nav-item active">
+                    <a class="nav-link text-black-50" th:href="@{/complains/current}">Report-Complaints</a>
+                </li>
+                <li>
+                    <a class="nav-link text-black-50" th:href="@{/complaint}">complaints</a>
+                </li>
+                <li>
+                    <a class="nav-link text-black-50" th:href="@{/validity}">Valid-Complaints</a>
+                </li>
+                 <li>
+                    <a class="nav-link text-black-50" th:href="@{/isAddressed}">Addressed-Complaints</a>
+                </li>
+                <li>
+                    <a class="nav-link text-black-50"
+                    th:href="@{/profile}" 
+                    sec:authentication="name"></a>
+                </li>
                 </ul>
-                <form  class="d-flex" method="POST" th:action="@{/logout}">
+                <form  class="text-right" method="POST" th:action="@{/logout}">
                   <input class="form-control me-2 btn btn-outline-success" type="submit" value="Logout"/>
                 </form>
                 </div>
@@ -60,7 +66,7 @@
       <div>
         <label class="form-label" for="studentName">Name: </label>
         <input
-          th:class="|form-control ${#fields.hasErrors('studentName')? 'is-invalid': 'is-valid'}|"
+          th:class="|form-control ${#fields.hasErrors('studentName')? 'is-invalid': 'is-valid'}| "
           type="text"
           th:field="*{studentName}"
         />

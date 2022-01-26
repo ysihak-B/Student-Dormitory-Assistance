@@ -12,6 +12,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import lombok.RequiredArgsConstructor;
 
+
 @Controller
 @SessionAttributes("complainReport")
 @RequiredArgsConstructor
@@ -33,6 +34,6 @@ public class ComplainController {
 
         this.repository.save(complain);
         status.setComplete();
-        return "redirect:/";
+        return "redirect:/complaint";
     }
 }

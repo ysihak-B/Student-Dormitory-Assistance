@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+  <head >
+    <title> Student Dormitory Assistant</title>
+  </head>
+  <body>
+      <div class="container">
+          <div>
+              <br>
+              <h1>profile page</h1>
+              <br>
+          </div>
+          <div>
+              <form method="post" th:action="@{/change}" th:object="${myProfile}">
+                  <div>
+                    <label for="username">Username :</label>
+                    <input type="text" th:value="${user.username}">
+                  </div>
+                  <br>
+                  <br>
+                  <div>
+                    <label for="password">Password :</label>
+                    <input type="text" th:value="${user.password}">
+                  </div>
+                  <br>
+                  <br>
+                  <div>
+                    <label for="fullName">Full Name :</label>
+                    <input type="text" th:value="${user.fullName}">
+                  </div>
+                  <br>
+                  <br>
+                  <div>
+                    <label for="phone">Phone :</label>
+                    <input type="text" th:value="${user.phone}">
+                  </div>
+                  <button type="submit">Save</button>
+              </form>
+          </div>
+      </div>
+  </body>
+  </html>
