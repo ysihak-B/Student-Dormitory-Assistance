@@ -43,8 +43,7 @@
                     <li>
                         <a class="nav-link text-black-50"
                         th:href="@{/profile}" 
-                        sec:authentication="name"></a>
-                    </li>
+                        sec:authentication="name"></a></li>
                 </ul>
                 <form  class="d-flex" method="POST" th:action="@{/logout}">
                   <input class="form-control me-2 btn btn-outline-success" type="submit" value="Logout"/>
