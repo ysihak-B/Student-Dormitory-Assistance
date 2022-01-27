@@ -1,163 +1,105 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
- xmlns:th="http://www.thymeleaf.org">
+ xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     <head>
         <title>Valid Complaints</title>
         <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     </head>
-
-<body>
-    <div class="row justify-content-center">
-        <nav class="navbar navbar-expand-md navbar-light bg-light">
-            <a href="#" class="navbar-brand " style="margin-left: 10px;"><h1>Student Dormitory Assistant</h1></a>
-            <div class="text-right">
-              <button
-            class="navbar-toggler btn btn-secondary"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#toggleMobileMenu"
-            aria-bs-controls="toggleMobileMenu"
-            aria-expanded="false"
-            aria-lable="Toggel navigation"
-            style="margin-right: 12px;" >
-            <span class="navbar-toggler-icon"></span>
-             Menu</button>
-            </div>
-            
-            <div class="collapse navbar-collapse " id="toggleMobileMenu">
-                <ul class="navbar-nav" style="margin-left: 10px;">
-                  <li class="nav-item active">
-                    <a class="nav-link text-black-50" th:href="@{/complains/current}">Report-Complaints</a>
-                </li>
-                <li>
-                    <a class="nav-link text-black-50" th:href="@{/complaint}">complaints</a>
-                </li>
-                <li>
-                    <a class="nav-link text-black-50" th:href="@{/validity}">Valid-Complaints</a>
-                </li>
-                 <li>
-                    <a class="nav-link text-black-50" th:href="@{/isAddressed}">Addressed-Complaints</a>
-                </li>
-                <li>
-                    <a class="nav-link text-black-50"
-                    th:href="@{/profile}" 
-                    sec:authentication="name"></a>
-                </li>
-          
-                </ul>
-                <form  class="d-flex" method="POST" th:action="@{/logout}">
-                  <input class="form-control me-2 btn btn-outline-success" type="submit" value="Logout"/>
-                </form>
+    <body>
+        <div class="row justify-content-center">
+            <nav class="navbar navbar-expand-md navbar-light bg-light">
+                <a href="#" class="navbar-brand " style="margin-left: 10px;"><h1>Student Dormitory Assistant</h1></a>
+                <div class="text-right">
+                <button
+                class="navbar-toggler btn btn-secondary"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#toggleMobileMenu"
+                aria-bs-controls="toggleMobileMenu"
+                aria-expanded="false"
+                aria-lable="Toggel navigation"
+                style="margin-right: 12px;" >
+                <span class="navbar-toggler-icon"></span>
+                Menu</button>
                 </div>
-        </nav>
-    </div>
+                
+                <div class="collapse navbar-collapse " id="toggleMobileMenu">
+                    <ul class="navbar-nav" style="margin-left: 10px;">
+                    <li class="nav-item active">
+                        <a class="nav-link text-black-50" th:href="@{/complains/current}">Report-Complaints</a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-black-50" th:href="@{/complaint}">complaints</a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-black-50" th:href="@{/validity}">Valid-Complaints</a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-black-50" th:href="@{/isAddressed}">Addressed-Complaints</a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-black-50"
+                        th:href="@{/profile}" 
+                        sec:authentication="name"></a>
+                    </li>
+            
+                    </ul>
+                    <form  class="d-flex" method="POST" th:action="@{/logout}">
+                    <input class="form-control me-2 btn btn-outline-success" type="submit" value="Logout"/>
+                    </form>
+                    </div>
+            </nav>
+        </div>
 
-
-    <div>
-
-    
-
-        <div class="table">
-          
-           <h2 class="card-header text-center font-weight-bold text-uppercase py-4">Valid Complaints</h2>
-          <table class="table align-middle table-responsive" th:each="v : ${valid}">
-              <tbody >
-              <tr>
-                  <td>ID</td>
-                  <td th:text="${v.id}"></td>
-              </tr>
-              <tr>
-                  <td>Student Name</td>
-                  <td th:text="${v.studentName}"></td>
-              </tr>
-              <tr>
-                  <td>Student Id</td>
-                  <td th:text="${v.studentID}"></td>
-              </tr>
-              <tr>
-                  <td>Block Number</td>
-                  <td th:text="${v.studentBlockNO}"></td>
-              </tr>
-              <tr>
-                  <th>Dorm Number</th>
-                  <td th:text="${v.studentDormNO}"></td>
-              </tr>
-              <tr>
-                  <td>Complain</td>
-                  <td th:text="${v.studentComplain}"></td>
-              </tr>
-              <tr>
-                  <td>Validity</td>
-                  <td th:text="${v.valid}"></td>
-              </tr>
-              <tr>
-                  <td>Addressed or Unaddressed</td>
-                  <td th:text="${v.address}"></td>
-              </tr>
-              <tr>
-                  <td><a class="btn btn-primary btn-md "  aria-disabled="true" th:href="@{'/edit/' + ${v.id}}">Edit</a>
-                      &nbsp;&nbsp;&nbsp;
-                      <a  class="btn btn-primary btn-md "  th:href="@{'/delete/' + ${v.id}}">Delete</a></td>
-                      
-
-              </tr>
-          </tbody>
-          <br>
-          <br>
-     </div>
-  </div>
-  <!-- <div >
-  
-      
-
-    <div class>
-      <h1 class="card-header text-center font-weight-bold text-uppercase py-4">Invalid Complaints</h1>
-      
-        <table class=" table align-middle table-responsive">
-            <tbody th:each="invalid : ${invalid}">
+        <div>
+            <div class="table">
+            <h2 class="card-header text-center font-weight-bold text-uppercase py-4">Valid Complaints</h2>
+            <table class="table align-middle table-responsive" th:each="v : ${valid}">
+                <tbody >
                 <tr>
                     <td>ID</td>
-                    <td th:text="${invalid.id}"></td>
+                    <td th:text="${v.id}"></td>
                 </tr>
                 <tr>
                     <td>Student Name</td>
-                    <td th:text="${invalid.studentName}"></td>
+                    <td th:text="${v.studentName}"></td>
                 </tr>
                 <tr>
                     <td>Student Id</td>
-                    <td th:text="${invalid.studentID}"></td>
+                    <td th:text="${v.studentID}"></td>
                 </tr>
                 <tr>
                     <td>Block Number</td>
-                    <td th:text="${invalid.studentBlockNO}"></td>
+                    <td th:text="${v.studentBlockNO}"></td>
                 </tr>
                 <tr>
                     <th>Dorm Number</th>
-                    <td th:text="${invalid.studentDormNO}"></td>
+                    <td th:text="${v.studentDormNO}"></td>
                 </tr>
                 <tr>
                     <td>Complain</td>
-                    <td th:text="${invalid.studentComplain}"></td>
+                    <td th:text="${v.studentComplain}"></td>
                 </tr>
                 <tr>
                     <td>Validity</td>
-                    <td th:text="${invalid.valid}"></td>
+                    <td th:text="${v.valid}"></td>
                 </tr>
                 <tr>
                     <td>Addressed or Unaddressed</td>
-                    <td th:text="${invalid.address}"></td>
+                    <td th:text="${v.address}"></td>
                 </tr>
                 <tr>
-                    <td><a class="btn btn-primary btn-md "  aria-disabled="true" th:href="@{'/edit/' + ${invalid.id}}">Edit</a>
+                    <td><a class="btn btn-primary btn-md "  aria-disabled="true" th:href="@{'/edit/' + ${v.id}}">Edit</a>
                         &nbsp;&nbsp;&nbsp;
-                        <a  class="btn btn-primary btn-md "  th:href="@{'/delete/' + ${invalid.id}}">Delete</a></td>
-                        
-
+                        <a  class="btn btn-primary btn-md "  th:href="@{'/delete/' + ${v.id}}">Delete</a></td>
                 </tr>
             </tbody>
-    </div>
-    </div> -->
-    <script th:src="@{/js/bootstrap.bundle.min.js}"></script> 
-</body>
+            <br>
+            <br>
+            </div>
+        </div>
+        <script th:src="@{/js/bootstrap.bundle.min.js}"></script> 
+    </body>
+</html>

@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
- xmlns:th="http://www.thymeleaf.org">
+ xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     <head>
         <title>Complaints</title>
         <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     </head>
 
     <body>
@@ -53,14 +52,10 @@
                 </div>
         </nav>
     </div>
-
-
 <div>
-
 
     <h1 class="card-header text-center font-weight-bold text-uppercase py-4">List of Complaints</h1>
     <!-- <a href="/new">Create New Complaint</a> -->
-
         <div class="table">
             <table class=" table  table-responsive" th:each="Profile : ${listProfile}">
                 <tbody >
@@ -99,18 +94,15 @@
                     <tr>
                         <td><a class="btn btn-primary btn-md "  aria-disabled="true" th:href="@{'/edit/' + ${Profile.id}}">Edit</a>
                             &nbsp;&nbsp;&nbsp;
-                            <a  class="btn btn-primary btn-md "  th:href="@{'/delete/' + ${Profile.id}}">Delete</a></td>
-                            
+                            <a  class="btn btn-primary btn-md "  th:href="@{'/delete/' + ${Profile.id}}">Delete</a></td>   
                     </tr>
                 </tbody>
                 <br>
                 <br>
         </div>
-</div>  
-<script th:src="@{/js/bootstrap.bundle.min.js}"></script> 
-</body>
-
-
+    </div>  
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script> 
+    </body>
 </html>
 
 

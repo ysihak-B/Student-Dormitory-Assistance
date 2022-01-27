@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
- xmlns:th="http://www.thymeleaf.org">
+ xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     <head>
         <title>Edit Complaints</title>
         <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     </head>
 
     <body>
@@ -33,7 +32,7 @@
                         <a class="nav-link text-black-50" th:href="@{/complains/current}">Report-Complaints</a>
                     </li>
                     <li>
-                        <a class="nav-link text-black-50" th:href="@{/complaint}">complaints</a>
+                        <a class="nav-link text-black-50" th:href="@{/complaint}">Complaints</a>
                     </li>
                     <li>
                         <a class="nav-link text-black-50" th:href="@{/validity}">Valid-Complaints</a>
@@ -57,6 +56,7 @@
         <div >
             <h1 align="center">Edit Complaint</h1>
             <br />
+
             <form class="form-group" action="#" th:action="@{/save}" th:object="${complainReport} "
                 method="post" style="margin-left: 20%;">
                 <div class="form-group col-lg-3">
@@ -86,22 +86,22 @@
                   <div class="form-group col-lg-3">
                     <label for="validity">validity</label>
                     <input class="form-control"
-                            type="text" th:field="*{valid}" id="validity" /> 
+                            type="text" th:field="*{valid}" id="validity" required="required" /> 
+                            <p>Insert <span><b>"VALID"</b></span> for valid and <span><b>"INVALID"</b></span> for invalid and <span><b>"NONE"</b></span> for neither </p>
     
                   </div>
                   <div class="form-group col-lg-3">
                     <label for="address">Is Addressed</label>
-                    <input type="text" class="form-control" th:field="*{address}" id="address" />
+                    <input type="text" class="form-control" th:field="*{address}" id="address" required="required"/>
+                    <p>Insert <span ><b>"ADDRESSED"</b></span> for addressed and <span><b>"UNADDRESSED"</b></span> for Unaddressed and <span><b>"NONE"</b></span> for neither </p>
                   </div>
+
                 </br>
                   <Button  class="btn btn-primary btn-md "  type="submit">Save</Button>
                   </div>
-                  
-                  
-                  
-
             </form>
         </div>
+        <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
     </body>
     </html>
 </body>

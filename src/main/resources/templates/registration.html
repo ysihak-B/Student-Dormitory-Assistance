@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
   <head>
     <title> Student Dormitory Assistant</title>
   </head>
@@ -8,9 +8,6 @@
   <body>
     <div class="container mx-auto w-50">
       <h1 class="display-4">Sign Up</h1>
-
-      <!-- <img th:src="@{/images/dorm.jpg}" /> -->
-
       <form method="POST" th:action="@{/register}" id="registerForm">
         <label class="form-label" for="username">Username: </label>
         <input
@@ -28,15 +25,6 @@
         type="password"
         name="password"
         id="password"
-        />
-
-        <label class="form-label" for="confirm">Confirm password: </label>
-        <input
-        required="required"
-        class="form-control"
-        type="password"
-        name="confirm"
-        id="confirm"
         />
 
         <label class="form-label" for="fullName">Full name: </label>
